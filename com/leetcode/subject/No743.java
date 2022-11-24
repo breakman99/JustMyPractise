@@ -5,9 +5,11 @@ public class No743 {
         System.out.println();
     }
 }
-class No743_Solution {
+
+// Dijkstra: Adjacency matrix (邻接矩阵)
+class No743_Solution01 {
     public int networkDelayTime(int[][] times, int n, int k) {
-        int V = Integer.MAX_VALUE;
+        int V = Integer.MAX_VALUE >> 1;
         int[][] graph = new int[n][n];
         for (int i = 0; i < n; i++) {
             Arrays.fill(graph[i], -1);
@@ -44,6 +46,41 @@ class No743_Solution {
             else max = Math.max(max, i);
         }
         return max;
+    }
+}
+
+// Dijkstra: (邻接表)
+class No743_Solution02 {
+    int M = 6002;
+    int N = 102;
+    int[] he = new int[N];
+    int[] ne = new int[M];
+    int[] e  = new int[M];
+    int[] w  = new int[M];
+    int idx = 0;
+    public int networkDelayTime(int[][] times, int n, int k) {
+        // create graph
+        for (int[] time : times) {
+            add(time[0], time[1], time[2]);
+        }
+        int[] path = new int[n];
+        boolean[] used = new boolean[n];
+        PriorityQueue<Integer[]> queue = new PriorityQueue<>((o1, o2) -> o1[1] - o2[1]);
+        queue.add(new Integer[]{k, 0});
+        while (!queue.isEmpty()) {
+            Integer[] temp = queue.remove();
+            int t = temp[0];
+        }
+        return 0;
+    }
+
+    // a:起点  b:终点  c:边权值
+    void add(int a, int b, int c) {
+        e[idx] = b;
+        w[idx] = c;
+        ne[idx] = he[a];
+        he[a] = idx;
+        idx++;
     }
 }
 
