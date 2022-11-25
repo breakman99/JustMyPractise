@@ -113,7 +113,7 @@ class No743_Solution02 {
     }
 }
 
-// floyd 邻接矩阵
+// floyd 邻接矩阵实现
 class No743_Solution03 {
     public int networkDelayTime(int[][] times, int n, int k) {
         int[][] graph = new int[n + 1][n + 1];
