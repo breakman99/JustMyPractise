@@ -4,10 +4,16 @@ import java.util.*;
 
 public class No1807 {
     public static void main(String[] args) {
-        Map<String, String> dict = new HashMap<>();
-        dict.put("name", "bob");
-        dict.put("age", "two");
-        System.out.println(new No1807_Solution().evaluate("(name)is(age)yearsold", ));
+        List<List<String>> dict = new ArrayList<>();
+        List<String> dict1 = new ArrayList<>();
+        List<String> dict2 = new ArrayList<>();
+        dict1.add("name");
+        dict1.add("bob");
+        dict2.add("age");
+        dict2.add("two");
+        dict.add(dict1);
+        dict.add(dict2);
+        System.out.println(new No1807_Solution().evaluate("(name)is(age)yearsold", dict));
     }
 }
 
