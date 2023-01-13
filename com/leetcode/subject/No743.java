@@ -140,7 +140,28 @@ class No743_Solution03 {
     }
 }
 
+// Bellman-Ford
+class No743_Solution04 {
+    public int networkDelayTime(int[][] times, int n, int k) {
+        int[] dist = new int[n + 1];
+        Arrays.fill(dist, Integer.MAX_VALUE >> 1);
+        dist[k] = 0;
 
+        for (int i = 1; i <= n; i++) {
+            int[] pre = dist.clone();
+            for (int[] time : times) {
+                dist[time[1]] = Math.min(dist[time[1]], pre[time[0]] + time[2]);
+            }
+        }
+        // get max value
+        int maxValue = -1;
+        for (int i = 1; i <= n; i++) {
+            if (i == k) continue;
+            maxValue = Math.max(maxValue, dist[i]);
+        }
+        return maxValue >= (Integer.MAX_VALUE >> 1) ? -1 : maxValue;
+    }
+}
 
 
 
