@@ -9,16 +9,21 @@ import java.util.Arrays;
  * 使得从 src 到 dst 的 价格最便宜 ，并返回该价格。 如果不存在这样的路线，则输出 -1。
  */
 public class No787 {
-
 }
 
 // Bellman-Ford
 class No787_Solution {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
-        
-
-
-        return 0;
+        int[] dist = new int[n];
+        Arrays.fill(dist, Integer.MAX_VALUE >> 1);
+        dist[src] = 0;
+        for (int i = 0; i < k + 1; i++) {
+            int[] copy = dist.clone();
+            for (int[] flight : flights) {
+                dist[flight[1]] = Math.min(dist[flight[1]], copy[flight[0]] + flight[2]);
+            }
+        }
+        return dist[dst] >= Integer.MAX_VALUE >> 1 ? -1 : dist[dst];
     }
 }
 
