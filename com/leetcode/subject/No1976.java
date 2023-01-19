@@ -29,7 +29,7 @@ class No1976_Solution {
         while (!queue.isEmpty()) {
             int[] temp = queue.remove();
             int to = temp[0], val = temp[1];
-            dist[to] = Math.min(dist[to])
+            //dist[to] = Math.min(dist[to])
         }
         return 0;
     }
