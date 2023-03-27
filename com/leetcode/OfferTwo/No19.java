@@ -2,7 +2,7 @@ package com.leetcode.OfferTwo;
 
 public class No19 {
     public static void main(String[] args) {
-        System.out.println();
+        System.out.println("hello world");
     }
 }
 
