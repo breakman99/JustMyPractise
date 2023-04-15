@@ -9,7 +9,7 @@ import java.util.Arrays;
  */
 public class No322 {
     public static void main(String[] args) {
-        System.out.println(new No322().coinChange(new int[]{1,2,5}, 11));
+        System.out.println(new No322().coinChange(new int[]{5,2,1}, 11));
     }
 
     /**
@@ -18,15 +18,18 @@ public class No322 {
      * 解释：11 = 5 + 5 + 1<br>
      */
     public int coinChange(int[] coins, int amount) {
+        int len = coins.length;
         int[] dp = new int[amount + 1];
-        Arrays.fill(dp, amount + 1);
+        Arrays.fill(dp, amount+1);
         dp[0] = 0;
-        for (int i = 1; i <= amount; i++) {
-            for (int j = 0; j < coins.length; j++) {
-                if (i - coins[j] >= 0)
-                    dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+        for (int i = 0; i < len; i++) {
+            for (int j = 1; j <= amount; j++) {
+                if (j - coins[i] >= 0) {
+                    dp[j] = Math.min(dp[j], dp[j - coins[i]] + 1);
+                }
             }
         }
+
         return dp[amount] > amount ? -1 : dp[amount];
     }
 }
