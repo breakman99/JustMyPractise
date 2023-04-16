@@ -9,6 +9,7 @@ public class test1 {
         Thread t1 = new Thread(() -> {
             System.out.println(Thread.currentThread().getName() + " start, isDaemon:" + Thread.currentThread().isDaemon());
             while (true) {
+                try { TimeUnit.MILLISECONDS.sleep(100); } catch (InterruptedException e) { e.printStackTrace();}
             }
         }, "t1");
         t1.setDaemon(true);
