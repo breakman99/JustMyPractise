@@ -12,6 +12,20 @@ public class CompletableFutureDemo1 {
         //用CompletableFuture完成和Future一样的功能，get同样会阻塞住线程
         futureFunc();
         completableFutureFunc();
+        //链式编程的几个例子
+        chainFunc();
+    }
+
+    private static void chainFunc() {
+        System.out.println(CompletableFuture.supplyAsync(() -> "resultA")
+                .thenApply(c -> (c + "thenApply0"))
+                .thenApply(c -> (c + "thenApply1"))
+                .thenApply(c -> (c + "thenApply2, i have both req and resp"))
+                .join());
+        CompletableFuture.supplyAsync(()->"resultB").thenAccept(c -> {
+            System.out.println(c + "thenAccept,i have req but no resp");
+        }).join();
+
     }
 
     //流式操作，用whenComplete来进入下一个stage（阶段
